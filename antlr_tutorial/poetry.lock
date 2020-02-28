@@ -1,0 +1,16 @@
+[[package]]
+category = "main"
+description = "ANTLR 4.8 runtime for Python 3.7"
+name = "antlr4-python3-runtime"
+optional = false
+python-versions = "*"
+version = "4.8"
+
+[metadata]
+content-hash = "6202b3e3013729ec767318d09816e98b617332c0e3779c49b0bd62f13d0925e2"
+python-versions = "^3.8"
+
+[metadata.files]
+antlr4-python3-runtime = [
+    {file = "antlr4-python3-runtime-4.8.tar.gz", hash = "sha256:15793f5d0512a372b4e7d2284058ad32ce7dd27126b105fb0b2245130445db33"},
+]
