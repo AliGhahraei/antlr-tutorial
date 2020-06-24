@@ -20,7 +20,7 @@ SHOUTS              : S H O U T S;
 WORD                : (LOWERCASE | UPPERCASE | '_')+ ;
 WHITESPACE          : (' ' | '\t') ;
 NEWLINE             : ('\r'? '\n' | '\r')+ ;
-TEXT                : ~[\])]+ ;
+TEXT                : ('['|'(') .*? (']'|')');
 
 /*
  * Parser Rules
@@ -35,6 +35,6 @@ emoticon            : ':' '-'? ')'
                     | ':' '-'? '('
                     ;
 
-link                : '[' TEXT ']' '(' TEXT ')' ;
+link                : TEXT TEXT ;
 color               : '/' WORD '/' message '/';
 mention             : '@' WORD ;
