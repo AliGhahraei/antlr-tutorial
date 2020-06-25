@@ -1,3 +1,4 @@
+const ChatParser = require('./ChatParser');
 let ChatListener = require('./ChatListener').ChatListener;
 
 const HtmlChatListener = function(res) {
@@ -21,15 +22,15 @@ HtmlChatListener.prototype.exitName = function(ctx) {
 
 HtmlChatListener.prototype.exitEmoticon = function(ctx) {      
     let emoticon = ctx.getText();
-    
+
     if(emoticon === ':-)' || emoticon === ':)')
     {
-        this.Res.write("🙂");        
+        ctx.text = "🙂";
     }
-    
+
     if(emoticon === ':-(' || emoticon === ':(')
     {
-        this.Res.write("🙁");            
+        ctx.text = "🙁";
     }
 }; 
 
@@ -51,11 +52,29 @@ HtmlChatListener.prototype.enterColor = function(ctx) {
 };
 
 HtmlChatListener.prototype.exitColor = function(ctx) {
-    this.Res.write("</span>");
+    ctx.text += ctx.message().text;
+    ctx.text += '</span>';
 };
 
 HtmlChatListener.prototype.exitMessage = function(ctx) {
-    this.Res.write(ctx.getText());
+    let text = '';
+
+    for (let index = 0; index < ctx.children.length; index++) {
+        if(ctx.children[index].text != null)
+            text += ctx.children[index].text;
+        else
+            text += ctx.children[index].getText();
+    }
+
+    if (ctx.parentCtx instanceof ChatParser.ChatParser.LineContext)
+    {
+        this.Res.write(text);
+        this.Res.write("</p>");
+    }
+    else
+    {
+        ctx.text = text
+    }
 };
 
 exports.HtmlChatListener = HtmlChatListener;
