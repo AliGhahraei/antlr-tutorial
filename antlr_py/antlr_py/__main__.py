@@ -4,7 +4,7 @@ from antlr4 import FileStream, CommonTokenStream, ParseTreeWalker
 
 from antlr_py.ChatLexer import ChatLexer
 from antlr_py.ChatParser import ChatParser
-from antlr_py.HtmlChatListener import HtmlChatListener
+from antlr_py.listeners import HtmlChatListener
 
 
 def main(argv):
