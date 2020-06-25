@@ -2,9 +2,9 @@
   "name": "antlr_tutorial_js",
   "version": "1.0.0",
   "description": "",
-  "main": "antlr.js",
+  "main": "antlr_js/antlr.js",
   "scripts": {
-    "start": "node antlr.js",
+    "start": "node antlr_js/antlr.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ali Ghahraei Figueroa",
